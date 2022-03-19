@@ -16,15 +16,19 @@
           <div class="col">
             <div class="card shadow-sm">
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title><%= company.name %></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><%= company.name %></text></svg>
-
               <div class="card-body">
-                <p class="card-text"><%= company.description %></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <% if company.contact_email %>
+                <p class="card-text"><b>İmkanlar:</b> <%= company.perks %></p>
+                <p class="card-text"><b>Konum:</b> <%= company.location %></p>
+                <p class="card-text"><b>Çalışma Şekli:</b> <%= company.work_type %></p>
+                <div class="d-flex justify-content-between align-items-center">             
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="mailto:<%= company.contact_email %>">İletişime Geç</a></button>
-                    </div>
-                  <% end %>
+                      <% if company.website %>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<%= company.website %>" target="_blank">Web Sitesi</a></button>  
+                      <% end %>
+                      <% if company.contact_email %>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="mailto:<%= company.contact_email %>">İletişime Geç</a></button>
+                      <% end %>
+                    </div>  
                 </div>
               </div>
             </div>
