@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @companies = Company.all
+    @companies = Company.all.order(:name)
   end
 end
