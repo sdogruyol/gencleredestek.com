@@ -9,8 +9,20 @@
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-3 bg-light">
     <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="fw-light">Firma Listesi</h1>
+          <div class="form-group" style="margin-top: 10px;margin-bottom: 30px">
+            <%= search_form_for @q, url: root_path do |f| %>
+              <%= f.search_field :name_or_location_or_work_type_or_perks_cont, style: "width: 80%", placeholder: 'Aramak için İsim, Konum, Çalışma Şekli ve ya İmkan girin' %>
+
+              <%= f.submit 'Ara' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% @companies.each do |company| %>
           <div class="col">

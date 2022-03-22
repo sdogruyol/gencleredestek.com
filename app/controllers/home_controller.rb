@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @companies = Company.all.order(:name)
+    @q = Company.ransack(params[:q])
+    @companies = @q.result.order(:name)
   end
 end
