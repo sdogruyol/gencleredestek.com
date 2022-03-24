@@ -11,18 +11,18 @@
 
   <div class="album py-3 bg-light">
     <div class="container">
-      <div class="row">
-        <div class="col text-center">
+      <%= search_form_for @q, url: root_path do |f| %>
+        <div class="row align-items-start align-items-center text-center g-3" style="margin-bottom: 30px">
           <h1 class="fw-light">Firma Listesi</h1>
-          <div class="form-group" style="margin-top: 10px;margin-bottom: 30px">
-            <%= search_form_for @q, url: root_path do |f| %>
-              <%= f.search_field :name_or_location_or_work_type_or_perks_cont, style: "width: 80%", placeholder: 'Aramak için İsim, Konum, Çalışma Şekli ve ya İmkan girin' %>
 
-              <%= f.submit 'Ara' %>
-            <% end %>
+          <div class="col-6">
+            <%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id, :name, @q.locations_id_eq), { prompt: 'Konum' }, {class: 'form-select', onchange: "this.form.submit();"} %>
+          </div>
+          <div class="col-6">
+            <%= f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name, @q.work_types_id_eq), { prompt: 'Çalışma Şekli'}, {class: 'form-select', onchange: "this.form.submit();"} %>
           </div>
         </div>
-      </div>
+      <% end %>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% @companies.each do |company| %>
           <div class="col">
@@ -42,15 +42,15 @@
                   <%= company.work_types.map(&:name).join(',')%>
                 <% end %>
                 </p>
-                <div class="d-flex justify-content-between align-items-center">             
+                <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <% if company.website %>
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<%= company.website %>" target="_blank">Web Sitesi</a></button>  
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<%= company.website %>" target="_blank">Web Sitesi</a></button>
                       <% end %>
                       <% if company.contact_email %>
                         <button type="button" class="btn btn-sm btn-outline-secondary"><a href="mailto:<%= company.contact_email %>">İletişime Geç</a></button>
                       <% end %>
-                    </div>  
+                    </div>
                 </div>
               </div>
             </div>

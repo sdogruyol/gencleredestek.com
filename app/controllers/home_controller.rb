@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
     @q = Company.ransack(params[:q])
-    @companies = @q.result.order(:name)
+    @companies = @q.result.includes(:locations, :work_types).order(:name)
   end
 end
