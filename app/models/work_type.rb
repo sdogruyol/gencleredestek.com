@@ -1,0 +1,2 @@
+class WorkType < ApplicationRecord
+end
