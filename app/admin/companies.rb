@@ -1,6 +1,7 @@
 ActiveAdmin.register Company do
   permit_params :name, :contact_email, :description, :location, :perks, :website, :work_type,
-                work_type_ids: []
+                work_type_ids: [],
+                location_ids: []
 
   form do |f|
     f.inputs 'Details' do
@@ -12,6 +13,10 @@ ActiveAdmin.register Company do
 
     f.inputs 'Work Types' do
       f.input :work_types, label: 'Work Type', as: :check_boxes, collection: WorkType.all
+    end
+
+    f.inputs 'Locations' do
+      f.input :locations, label: 'Location', as: :select, collection: Location.all.order(:display_order), input_html: {multiple: true}
     end
 
     f.actions

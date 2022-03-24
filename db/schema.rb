@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_24_075059) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_24_075409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_075059) do
     t.string "location"
     t.string "perks"
     t.string "work_type"
+  end
+
+  create_table "companies_locations", id: false, force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "location_id", null: false
   end
 
   create_table "companies_work_types", id: false, force: :cascade do |t|
