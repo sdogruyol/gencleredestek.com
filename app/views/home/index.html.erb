@@ -33,7 +33,11 @@
                   <p class="card-text"><b>İmkanlar:</b> <%= company.perks %></p>
                 <% end %>
                 <p class="card-text"><b>Konum:</b> <%= company.location %></p>
-                <p class="card-text"><b>Çalışma Şekli:</b> <%= company.work_type %></p>
+                <p class="card-text"><b>Çalışma Şekli:</b>
+                <% if company.work_types %>
+                  <%= company.work_types.map(&:name).join(',')%>
+                <% end %>
+                </p>
                 <div class="d-flex justify-content-between align-items-center">             
                     <div class="btn-group">
                       <% if company.website %>

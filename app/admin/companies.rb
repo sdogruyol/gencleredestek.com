@@ -1,6 +1,6 @@
 ActiveAdmin.register Company do
   permit_params :name, :contact_email, :description, :location, :perks, :website, :work_type,
-                work_types_attributes: [:id, :name, :_destroy]
+                work_type_ids: []
 
   form do |f|
     f.inputs 'Details' do
@@ -11,9 +11,7 @@ ActiveAdmin.register Company do
     end
 
     f.inputs 'Work Types' do
-      f.has_many :work_types, allow_destroy: true, new_record: false do |b|
-        b.input :name, label: 'Work Type', as: :select, collection: WorkType.all
-      end
+      f.input :work_types, label: 'Work Type', as: :check_boxes, collection: WorkType.all
     end
 
     f.actions
