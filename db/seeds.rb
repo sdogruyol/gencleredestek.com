@@ -91,3 +91,33 @@ Location.find_or_create_by id: 79, name: "Kilis", display_order: 80
 Location.find_or_create_by id: 80, name: "Osmaniye", display_order: 81
 Location.find_or_create_by id: 81, name: "Düzce", display_order: 82
 Location.find_or_create_by id: 82, name: 'Remote', display_order: 1
+
+def create_company(location_id, work_type_id)
+  location = Location.find location_id
+  work_type = WorkType.find work_type_id
+  company_name = Faker::Company.name
+  perks = Faker::Company.catch_phrase
+
+  company = Company.create name: company_name, perks: perks
+  company.locations << location
+  company.work_types << work_type
+  company.save
+end
+
+if Rails.env.development? && Company.count == 0
+  # Create 50 random companies with random locations
+  30.times do
+    location_id = rand 1..82
+    work_type_id = rand 1..3
+
+    create_company location_id, work_type_id
+  end
+
+  # Create 10 Remote companies
+  5.times do
+    location_id = 82
+    work_type_id = rand 1..3
+
+    create_company location_id, work_type_id
+  end
+end
