@@ -1,7 +1,7 @@
 # README
 ### Installation
 
-You'll need Ruby 3.1.1 installed.
+You'll need Ruby 3.1.1 and PostgreSQL to be installed.
 
 ```
 git clone https://github.com/sdogruyol/gencleredestek.com
