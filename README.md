@@ -1,24 +1,22 @@
 # README
+### Installation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You'll need Ruby 3.1.1 installed.
 
-Things you may want to cover:
+```
+git clone https://github.com/sdogruyol/gencleredestek.com
+cd gencleredestek.com
+bundle install
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle rails db:seed
+```
 
-* Ruby version
+### Running the project
 
-* System dependencies
+Once all the dependencies are installed run the server with
 
-* Configuration
+```
+bundle exec rails s
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
