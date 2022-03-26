@@ -3,6 +3,15 @@ ActiveAdmin.register Company do
                 work_type_ids: [],
                 location_ids: []
 
+  index do
+    selectable_column
+    column :id
+    column :contact_email
+    column :website
+    column :perks
+    actions
+  end
+
   form do |f|
     f.inputs 'Details' do
       f.input :name
