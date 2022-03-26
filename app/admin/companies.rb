@@ -28,7 +28,8 @@ ActiveAdmin.register Company do
     f.inputs 'Details' do
       f.input :name
       f.input :description
-      f.input :location
+      f.input :contact_email
+      f.input :website
       f.input :perks
     end
 
