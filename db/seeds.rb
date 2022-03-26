@@ -97,8 +97,12 @@ def create_company(location_id, work_type_id)
   work_type = WorkType.find work_type_id
   company_name = Faker::Company.name
   perks = Faker::Company.catch_phrase
+  website = Faker::Internet.domain_name(subdomain: true, domain: "example")
+  contact_email = Faker::Internet.safe_email
 
   company = Company.create name: company_name, perks: perks
+  company.contact_email = contact_email
+  company.website = website
   company.locations << location
   company.work_types << work_type
   company.save
