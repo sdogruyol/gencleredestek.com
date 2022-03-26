@@ -3,12 +3,24 @@ ActiveAdmin.register Company do
                 work_type_ids: [],
                 location_ids: []
 
+  filter :id
+  filter :contact_email
+  filter :perks
+  filter :work_types
+  filter :locations
+
   index do
     selectable_column
     column :id
     column :contact_email
     column :website
     column :perks
+    column :work_types do |company|
+      company.work_types.map(&:name).join(',')
+    end
+    column :locations do |company|
+      company.locations.map(&:name).join(',')
+    end
     actions
   end
 
