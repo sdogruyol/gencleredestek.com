@@ -4,6 +4,7 @@ ActiveAdmin.register Company do
                 location_ids: []
 
   filter :id
+  filter :name
   filter :contact_email
   filter :perks
   filter :work_types
@@ -12,6 +13,7 @@ ActiveAdmin.register Company do
   index do
     selectable_column
     column :id
+    column :name
     column :contact_email
     column :website
     column :perks
@@ -27,7 +29,6 @@ ActiveAdmin.register Company do
   form do |f|
     f.inputs 'Details' do
       f.input :name
-      f.input :description
       f.input :contact_email
       f.input :website
       f.input :perks
