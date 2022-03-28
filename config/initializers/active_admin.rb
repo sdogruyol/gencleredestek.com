@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Genclere Destek"
+  config.site_title = 'Genclere Destek'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

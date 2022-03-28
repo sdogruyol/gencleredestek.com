@@ -1,0 +1,64 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+Rails:
+  Enabled: true
+
+AllCops:
+  NewCops: disable
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - 'db/**/*.rb'
+
+Rails/Output:
+  Enabled: true
+  Exclude:
+    - 'db/seeds.rb'
+
+Rails/BulkChangeTable:
+  Enabled: true
+  Exclude:
+    - 'db/migrate/20220319165711_add_missing_fields_to_companies.rb'
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
