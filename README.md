@@ -1,3 +1,5 @@
+![build & test & quality](https://github.com/sdogruyol/gencleredestek.com/actions/workflows/main.yml/badge.svg?branch=main)
+
 # README
 ### Installation
 
