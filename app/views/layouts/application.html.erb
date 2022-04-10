@@ -8,7 +8,7 @@
     <meta property="og:title" content="Gençlere Destek, Geleceğe Destek" />
     <meta property="og:description" content="Türkiye'de Yazılım sektörüne yeni katılacak gençlere destek olabilecek firmaları burada bulabilirsiniz" />
     <meta property="og:type" content="website" />
-
+    <link rel="icon" type="image/x-icon" href="<%= asset_path("fav-icon.svg") %>">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LGNEWHSLXC"></script>
     <script>
@@ -29,7 +29,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class='bg-[#F1F1F5]'>
       <%= yield %>
   </body>
 </html>

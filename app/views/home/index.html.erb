@@ -1,20 +1,21 @@
         
-        <div class='absolute'>
+        <%# Absolute Background Image %>
+		<div class='absolute md:top-0 left-0 hidden sm:block'>
 			<img src=<%= asset_path("header_background.png") %>>
 		</div>
         
-        <header class="bg-gradient-to-r from-blue-200 to-white">
-        <div class='container px-20 py-11 h-screen mx-auto '>
+        <header class="bg-gradient-to-b from-blue-200 to-[#F1F1F5]">
+        <div class='container md:px-20 py-11 h-screen mx-auto '>
             <nav class="flex items-center justify-between px-12">
-				<p class='text-gray-600 z-10 cursor-pointer'>gencleredestek.com</p>
-				<a class='flex items-center px-4 border rounded-lg space-x-2 py-2 border-blue-500 cursor-pointer '>
+				<p class='text-gray-600 z-10 cursor-pointer'><img src=<%= asset_path("logo.svg") %>></p>
+				<a class='flex items-center p-2 md:px-4 border rounded-lg space-x-2  border-[#0062FF] cursor-pointer'>
 					<img src=<%= asset_path("send.svg") %>>
-					<span class='text-blue-600'>Firmanı Ekle</span>
+					<span class='text-[#0062FF]'>Firmanı Ekle</span>
 				</a>
 			</nav>
 
             <div class='text-center mt-44 space-y-9'>
-                <h1 class='text-5xl font-bold'><span class='text-blue-500'>Gençlere Destek,</span> Geleceğe Destek</h1>
+                <h1 class='text-5xl font-bold'><span class='text-[#0062FF]'>Gençlere Destek,</span> Geleceğe Destek</h1>
                 <h2 class='max-w-lg mx-auto font-medium text-gray-600'>Türkiye'de Yazılım sektörüne yeni katılacak gençlere destek olabilecek firmaları burada bulabilirsiniz.</h2>
             </div>
 
@@ -23,22 +24,82 @@
             </div>
         
         </div>
-			
-
-
 		</header>
 		
-		<main class='container px-32 py-11 mx-auto'>
-				<%= search_form_for @q, url: root_path do |f| %>
-					<div class="flex space-x-4">
+		<main class='container px-8 md:px-32 mx-auto'>
+		<%# Filter section %>
+		<div class='my-11 '>
+			<%= search_form_for @q, url: root_path do |f| %>
+					<div class="flex space-x-6">
 							<%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id,
 							:name, @q.locations_id_eq), { prompt: 'Konum' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
 							<%= f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name,
 							@q.work_types_id_eq), { prompt: 'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
-							
-							<img src=<%= asset_path("reset_search.svg") %> class='p-2 border-gray-300 border cursor-pointer rounded'>
+							<%# Reset Filter Button %>
+							<img src=<%= asset_path("reset_search.svg") %> class='p-2 border-gray-300 border cursor-pointer rounded bg-white'>							
 					</div>
-				<% end %>
+			<% end %>
+		</div>		
+
+		<%# List section %>
+		<div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+			<% @companies.each do |company| %>
+				<div class='border rounded border-gray-300 p-8 bg-white space-y-3 max-w-sm '>
+					<div class='flex items-center'>
+						<img src=<%= asset_path("default_company_logo.png") %> class='p-2 border-gray-300 border cursor-pointer rounded'>
+						<h2 class='ml-4 font-semibold text-base'><%= company.name %></h2>
+					</div>
+
+					<% if !company.perks.empty? %>
+					<div class='text-sm'>
+                 		<p class="font-medium">İmkanlar</p>
+						<p class='font-normal text-[#626973]'> <%= company.perks %> </p>
+					</div>
+					<% end %>
+
+					<% if company.locations %>
+					<div class='text-sm'>
+                 		<p class="font-medium">Konum</p>
+						<p class='font-normal text-[#626973]'> <%= company.locations.map(&:name).join(',')%> </p>
+					</div>
+					<% end %>
+
+					<% if company.work_types %>
+					<div class='text-sm'>
+                 		<p class="font-medium">Çalışma Şekli</p>
+						<p class='font-normal text-[#626973]'> <%= company.work_types.map(&:name).join(',')%> </p>
+					</div>
+					<% end %>
+
+					<div>
+						<% if company.website %>
+                       		<a href="<%= company.website %>" target="_blank" rel="noopener">Web Sitesi</a>
+                      	<% end %>
+
+						<% if company.contact_email %>
+							<a href="mailto:<%= company.contact_email %>" class='px-10 bg-gray-800'>İletişime Geç</a>
+						<% end %>
+					</div>
+
+					<div class='pt-3 mt-auto'>
+					<% if company.website %>
+                       		<a href="<%= company.website %>" target="_blank" rel="noopener" class='blue_button'>Web Sitesi</a>
+					<% end %>
+					<% if company.contact_email %>
+							<a href="mailto:<%= company.contact_email %>" class='light_button'>İletişime Geç</a>
+					<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
 		</main>
 
-		<footer></footer>
+		<footer class='pt-14 pb-8 md:pb-48 flex items-center justify-between container px-8 md:px-32 mx-auto'>
+
+		<p class='text-[#A2B2CE]'>Bu site açık kaynaklı olup <a href="https://github.com/sdogruyol/gencleredestek.com" class='text-[#0062FF]'>buradan</a> destek olabilirsiniz.</p>
+
+		<a href="#" >
+			<img src=<%= asset_path("chevron_up.svg") %>>
+		</a>
+
+		</footer>
