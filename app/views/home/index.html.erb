@@ -8,7 +8,7 @@
         <div class='container md:px-20 py-11 h-screen mx-auto '>
             <nav class="flex items-center justify-between px-12">
 				<p class='text-gray-600 z-10 cursor-pointer'><img src=<%= asset_path("logo.svg") %>></p>
-				<a class='flex items-center p-2 md:px-4 border rounded-lg space-x-2  border-[#0062FF] cursor-pointer'>
+				<a href="https://docs.google.com/spreadsheets/d/1-IpEibP1nQod43qCJfVqIv1uz6F8nSlbuXxCPpqGiGw/edit?usp=sharing" target="_blank" class='flex items-center p-2 md:px-4 border rounded-lg space-x-2  border-[#0062FF] cursor-pointer'>
 					<img src=<%= asset_path("send.svg") %>>
 					<span class='text-[#0062FF]'>Firmanı Ekle</span>
 				</a>
@@ -72,16 +72,6 @@
 						<p class='font-normal text-[#626973]'> <%= company.work_types.map(&:name).join(',')%> </p>
 					</div>
 					<% end %>
-
-					<div>
-						<% if company.website %>
-                       		<a href="<%= company.website %>" target="_blank" rel="noopener">Web Sitesi</a>
-                      	<% end %>
-
-						<% if company.contact_email %>
-							<a href="mailto:<%= company.contact_email %>" class='px-10 bg-gray-800'>İletişime Geç</a>
-						<% end %>
-					</div>
 
 					<div class='pt-3 mt-auto'>
 					<% if company.website %>
