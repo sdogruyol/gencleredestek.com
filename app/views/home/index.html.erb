@@ -1,9 +1,9 @@
-        
+
         <%# Absolute Background Image %>
 		<div class='absolute md:top-0 left-0 hidden sm:block'>
 			<img src=<%= asset_path("header_background.png") %>>
 		</div>
-        
+
         <header class="bg-gradient-to-b from-blue-200 to-[#F1F1F5]">
         <div class='container md:px-20 py-11 h-screen mx-auto '>
             <nav class="flex items-center justify-between px-12">
@@ -22,10 +22,10 @@
             <div class='flex items-center justify-center bg-transparent'>
             <lottie-player src=<%= asset_path("rocket.json") %>  speed="1"  style="width: 300px; height: 300px;"  loop autoplay class='fill-transparent'/>
             </div>
-        
+
         </div>
 		</header>
-		
+
 		<main class='container px-8 md:px-32 mx-auto'>
 		<%# Filter section %>
 		<div class='my-11 '>
@@ -36,10 +36,12 @@
 							<%= f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name,
 							@q.work_types_id_eq), { prompt: 'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
 							<%# Reset Filter Button %>
-							<img src=<%= asset_path("reset_search.svg") %> class='p-2 border-gray-300 border cursor-pointer rounded bg-white'>							
+							<a href="/">
+								<%= image_submit_tag asset_path("reset_search.svg"), class: "p-2 border-gray-300 border cursor-pointer rounded bg-white"%>
+							</a>
 					</div>
 			<% end %>
-		</div>		
+		</div>
 
 		<%# List section %>
 		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-16 justify-center">
