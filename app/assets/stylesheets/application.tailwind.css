@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.blue_button {
+		@apply text-white border-2 border-[#0062FF] bg-[#0062FF] hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg 
+		text-sm p-1.5 lg:p-2  2xl:px-5 2xl:py-2.5 mr-2 mb-2 focus:outline-none;
+	}
+	.light_button {
+		@apply text-[#0062FF] bg-white border-2 border-[#0062FF]  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm
+		p-1.5 lg:p-2 2xl:px-5 2xl:py-2.5 mr-2 mb-2 focus:outline-none;
+	}
+}
