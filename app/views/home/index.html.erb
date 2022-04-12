@@ -4,7 +4,7 @@
 			<img src=<%= asset_path("header_background.png") %>>
 		</div>
 
-        <header class="bg-gradient-to-b from-blue-200 to-[#F1F1F5]">
+        <header>
         <div class='container md:px-20 py-11 md:h-screen mx-auto '>
             <nav class="flex items-center justify-between px-4 lg:px-12">
 				<p class='text-gray-600 z-10 cursor-pointer'><img src=<%= asset_path("logo.svg") %>></p>
@@ -46,7 +46,7 @@
 		<%# List section %>
 		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-16 justify-center">
 			<% @companies.each do |company| %>
-				<div class='border rounded border-gray-300 p-4 2xl:p-8  bg-white space-y-3  '>
+				<div class='border rounded border-gray-300 p-4 2xl:p-8  bg-white space-y-3'>
 					<div class='flex items-center'>
 						<img src=<%= asset_path("default_company_logo.png") %> class='p-2 border-gray-300 border cursor-pointer rounded'>
 						<h2 class='ml-4 font-semibold text-base'><%= company.name %></h2>
