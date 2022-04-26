@@ -1,97 +1,95 @@
+<%# Absolute Background Image %>
+<div class="absolute md:top-0 left-0 hidden sm:block"><img src=<%= asset_path("header_background.png") %>></div>
 
-        <%# Absolute Background Image %>
-		<div class='absolute md:top-0 left-0 hidden sm:block'>
-			<img src=<%= asset_path("header_background.png") %>>
+<header>
+	<div class="container md:px-20 py-11 md:h-screen mx-auto">
+		<nav class="flex items-center justify-between px-4 lg:px-12">
+			<p class="text-gray-600 z-10 cursor-pointer"><img src=<%= asset_path("logo.svg") %>></p>
+			<a
+				href="https://docs.google.com/spreadsheets/d/1-IpEibP1nQod43qCJfVqIv1uz6F8nSlbuXxCPpqGiGw/edit?usp=sharing"
+				target="_blank"
+				class="flex items-center p-2 md:px-4 border rounded-lg space-x-2 border-[#0062FF] cursor-pointer"
+			>
+				<img src=<%= asset_path("send.svg") %>>
+				<span class="text-[#0062FF]">Firmanı Ekle</span>
+			</a>
+		</nav>
+
+		<div class="text-center mt-24 md:mt-44 space-y-9">
+			<h1 class="text-3xl md:text-5xl font-bold"><span class="text-[#0062FF]">Gençlere Destek,</span> Geleceğe Destek</h1>
+			<h2 class="max-w-lg mx-auto font-medium text-gray-600">
+				Türkiye'de Yazılım sektörüne yeni katılacak gençlere destek olabilecek firmaları burada bulabilirsiniz.
+			</h2>
 		</div>
 
-        <header>
-        <div class='container md:px-20 py-11 md:h-screen mx-auto '>
-            <nav class="flex items-center justify-between px-4 lg:px-12">
-				<p class='text-gray-600 z-10 cursor-pointer'><img src=<%= asset_path("logo.svg") %>></p>
-				<a href="https://docs.google.com/spreadsheets/d/1-IpEibP1nQod43qCJfVqIv1uz6F8nSlbuXxCPpqGiGw/edit?usp=sharing" target="_blank" class='flex items-center p-2 md:px-4 border rounded-lg space-x-2  border-[#0062FF] cursor-pointer'>
-					<img src=<%= asset_path("send.svg") %>>
-					<span class='text-[#0062FF]'>Firmanı Ekle</span>
-				</a>
-			</nav>
-
-            <div class='text-center mt-24 md:mt-44 space-y-9'>
-                <h1 class='text-3xl md:text-5xl font-bold'><span class='text-[#0062FF]'>Gençlere Destek,</span> Geleceğe Destek</h1>
-                <h2 class='max-w-lg mx-auto font-medium text-gray-600'>Türkiye'de Yazılım sektörüne yeni katılacak gençlere destek olabilecek firmaları burada bulabilirsiniz.</h2>
-            </div>
-
-            <div class='flex items-center justify-center'>
-            <lottie-player class='w-[220px] md:w-[300px] h-[220px] md:h-[300px]' src=<%= asset_path("rocket.json") %>  speed="1"   loop autoplay class='fill-transparent'/>
-            </div>
-
-        </div>
-		</header>
-
-		<main class='container px-8 md:px-32 mx-auto'>
-		<%# Filter section %>
-		<div class='my-11 '>
-			<%= search_form_for @q, url: root_path do |f| %>
-					<div class="flex space-x-6">
-							<%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id,
-							:name, @q.locations_id_eq), { prompt: 'Konum' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
-							<%= f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name,
-							@q.work_types_id_eq), { prompt: 'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
-							<%# Reset Filter Button %>
-							<a href="/">
-								<%= image_submit_tag asset_path("reset_search.svg"), class: "p-2 border-gray-300 border cursor-pointer rounded bg-white"%>
-							</a>
-					</div>
-			<% end %>
+		<div class="flex items-center justify-center">
+			<lottie-player class='w-[220px] md:w-[300px] h-[220px] md:h-[300px]' src=<%= asset_path("rocket.json") %> speed="1" loop
+			autoplay class='fill-transparent'/>
 		</div>
+	</div>
+</header>
 
-		<%# List section %>
-		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-16 justify-center">
-			<% @companies.each do |company| %>
-				<div class='border rounded border-gray-300 p-4 2xl:p-8  bg-white space-y-3'>
-					<div class='flex items-center'>
-						<img src=<%= asset_path("default_company_logo.png") %> class='p-2 border-gray-300 border cursor-pointer rounded'>
-						<h2 class='ml-4 font-semibold text-base'><%= company.name %></h2>
-					</div>
+<main class="container px-8 md:px-32 mx-auto">
+	<%# Filter section %>
+	<div class="my-11">
+		<%= search_form_for @q, url: root_path do |f| %>
+		<div class="flex space-x-6">
+			<%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id, :name,
+			@q.locations_id_eq), { prompt: 'Konum' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %> <%=
+			f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name, @q.work_types_id_eq), { prompt:
+			'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %> <%# Reset Filter Button %>
+			<a href="/">
+				<%= image_submit_tag asset_path("reset_search.svg"), class: "p-2 border-gray-300 border cursor-pointer rounded bg-white"%>
+			</a>
+		</div>
+		<% end %>
+	</div>
 
-					<% if !company.perks.empty? %>
-					<div class='text-sm'>
-                 		<p class="font-medium">İmkanlar</p>
-						<p class='font-normal text-[#626973]'> <%= company.perks %> </p>
-					</div>
-					<% end %>
-
-					<% if company.locations %>
-					<div class='text-sm'>
-                 		<p class="font-medium">Konum</p>
-						<p class='font-normal text-[#626973]'> <%= company.locations.map(&:name).join(',')%> </p>
-					</div>
-					<% end %>
-
-					<% if company.work_types %>
-					<div class='text-sm'>
-                 		<p class="font-medium">Çalışma Şekli</p>
-						<p class='font-normal text-[#626973]'> <%= company.work_types.map(&:name).join(',')%> </p>
-					</div>
-					<% end %>
-
-					<div class=' pt-3 '>
-						<% if company.website %>
-                       		<a href="<%= company.website %>" target="_blank" rel="noopener" class='blue_button'>Web Sitesi</a>
-						<% end %>
-						<% if company.contact_email %>
-							<a href="mailto:<%= company.contact_email %>" class='light_button'>İletişime Geç</a>
-						<% end %>
-					</div>
+	<%# List section %>
+	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-16 justify-center">
+		<% @companies.each do |company| %>
+		<div class="border rounded border-gray-300 p-4 2xl:p-8 bg-white flex flex-col justify-between">
+			<div class="space-y-3">
+				<div class="flex items-center">
+					<img src=<%= asset_path("default_company_logo.png") %> class='p-2 border-gray-300 border cursor-pointer rounded'>
+					<h2 class="ml-4 font-semibold text-base"><%= company.name %></h2>
 				</div>
-			<% end %>
+
+				<% if !company.perks.empty? %>
+				<div class="text-sm">
+					<p class="font-medium">İmkanlar</p>
+					<p class="font-normal text-[#626973]"><%= company.perks %></p>
+				</div>
+				<% end %> <% if company.locations %>
+				<div class="text-sm">
+					<p class="font-medium">Konum</p>
+					<p class="font-normal text-[#626973]"><%= company.locations.map(&:name).join(',')%></p>
+				</div>
+				<% end %> <% if company.work_types %>
+				<div class="text-sm">
+					<p class="font-medium">Çalışma Şekli</p>
+					<p class="font-normal text-[#626973]"><%= company.work_types.map(&:name).join(',')%></p>
+				</div>
+				<% end %>
+			</div>
+
+			<div class="mt-6">
+				<% if company.website %>
+				<a href="<%= company.website %>" target="_blank" rel="noopener" class="blue_button">Web Sitesi</a>
+				<% end %> <% if company.contact_email %>
+				<a href="mailto:<%= company.contact_email %>" class="light_button">İletişime Geç</a>
+				<% end %>
+			</div>
 		</div>
-		</main>
+		<% end %>
+	</div>
+</main>
 
-		<footer class='pt-14 pb-8 md:pb-48 flex items-center justify-between container px-8 md:px-32 mx-auto'>
+<footer class="pt-14 pb-8 md:pb-48 flex items-center justify-between container px-8 md:px-32 mx-auto">
+	<p class="text-[#A2B2CE]">
+		Bu site açık kaynaklı olup <a href="https://github.com/sdogruyol/gencleredestek.com" class="text-[#0062FF]">buradan</a> destek
+		olabilirsiniz.
+	</p>
 
-		<p class='text-[#A2B2CE]'>Bu site açık kaynaklı olup <a href="https://github.com/sdogruyol/gencleredestek.com" class='text-[#0062FF]'>buradan</a> destek olabilirsiniz.</p>
-
-		<a href="#" >
-			<img src=<%= asset_path("chevron_up.svg") %>>
-		</a>
-
-		</footer>
+	<a href="#"> <img src=<%= asset_path("chevron_up.svg") %>> </a>
+</footer>
