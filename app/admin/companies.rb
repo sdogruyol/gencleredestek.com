@@ -1,5 +1,5 @@
 ActiveAdmin.register Company do
-  permit_params :name, :contact_email, :description, :location, :perks, :website, :work_type,
+  permit_params :name, :contact_email, :description, :location, :perks, :is_active, :website, :work_type,
                 work_type_ids: [],
                 location_ids: []
 
@@ -17,6 +17,7 @@ ActiveAdmin.register Company do
     column :contact_email
     column :website
     column :perks
+    column :is_active
     column :work_types do |company|
       company.work_types.map(&:name).join(',')
     end
@@ -32,6 +33,7 @@ ActiveAdmin.register Company do
       f.input :contact_email
       f.input :website
       f.input :perks
+      f.input :is_active
     end
 
     f.inputs 'Work Types' do
