@@ -33,7 +33,7 @@ ActiveAdmin.register Company do
       f.input :contact_email
       f.input :website
       f.input :perks
-      f.input :is_active
+      f.input :is_active, as: :boolean
     end
 
     f.inputs 'Work Types' do
