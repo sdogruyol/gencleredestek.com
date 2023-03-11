@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: genclere_destek_production
-  username: genclere_destek
-  password: <%= ENV["GENCLERE_DESTEK_DATABASE_PASSWORD"] %>
+  url: <%= ENV.fetch('DATABASE_URL') %>
