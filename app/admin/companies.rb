@@ -1,6 +1,7 @@
 ActiveAdmin.register Company do
   permit_params :name, :contact_email, :description, :location, :perks, :is_active, :website, :work_type,
                 work_type_ids: [],
+                work_position_ids: [],
                 location_ids: []
 
   filter :id
@@ -20,6 +21,9 @@ ActiveAdmin.register Company do
     column :is_active
     column :work_types do |company|
       company.work_types.map(&:name).join(',')
+    end
+    column :work_positions do |company|
+      company.work_positions.map(&:name).join(',')
     end
     column :locations do |company|
       company.locations.map(&:name).join(',')
@@ -41,7 +45,7 @@ ActiveAdmin.register Company do
     end
 
     f.inputs 'Work Positions' do
-      f.input :work_types, label: 'Work Position', as: :check_boxes, collection: WorkPosition.all
+      f.input :work_positions, label: 'Work Position', as: :check_boxes, collection: WorkPosition.all
     end
 
     f.inputs 'Locations' do
