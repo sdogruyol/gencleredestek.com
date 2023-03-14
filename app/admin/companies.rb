@@ -40,6 +40,10 @@ ActiveAdmin.register Company do
       f.input :work_types, label: 'Work Type', as: :check_boxes, collection: WorkType.all
     end
 
+    f.inputs 'Work Positions' do
+      f.input :work_types, label: 'Work Position', as: :check_boxes, collection: WorkPosition.all
+    end
+
     f.inputs 'Locations' do
       f.input :locations, label: 'Location', as: :select, collection: Location.all.order(:display_order), input_html: {multiple: true}
     end
