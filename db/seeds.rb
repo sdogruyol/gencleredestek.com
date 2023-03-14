@@ -8,6 +8,12 @@ WorkType.find_or_create_by name: 'Tam Zamanlı'
 WorkType.find_or_create_by name: 'Yarı Zamanlı'
 WorkType.find_or_create_by name: 'Staj'
 
+# Seed Work Positions
+WorkPosition.find_or_create_by name: 'Backend'
+WorkPosition.find_or_create_by name: 'Frontend'
+WorkPosition.find_or_create_by name: 'Design'
+WorkPosition.find_or_create_by name: 'Product'
+
 # Seed Locations
 Location.find_or_create_by id: 1, name: "Adana", display_order: 5
 Location.find_or_create_by id: 2, name: "Adıyaman", display_order: 6
