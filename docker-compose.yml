@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: your_postgres_user
+      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_DB: genclere_destek_development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_URL: "postgres://your_postgres_user:your_postgres_password@db:5432/genclere_destek_development"
+      REDIS_URL: "redis://redis:6379/1"
+
+volumes:
+  postgres_data:
+  bundle_cache:

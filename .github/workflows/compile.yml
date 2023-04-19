@@ -1,0 +1,52 @@
+name: Compile Rails Application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: your_postgres_user
+          POSTGRES_PASSWORD: your_postgres_password
+          POSTGRES_DB: genclere_destek_development
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:6.2
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.1
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
+          gem install bundler
+          bundle install
+
+      - name: Compile Rails Application
+        env:
+          DATABASE_URL: "postgres://your_postgres_user:your_postgres_password@localhost:5432/genclere_destek_development"
+          REDIS_URL: "redis://localhost:6379/1"
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rails db:seed
+          bundle exec rake assets:precompile
