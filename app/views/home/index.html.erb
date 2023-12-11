@@ -40,7 +40,7 @@
 			@q.work_positions_id_eq), { prompt: 'Pozisyon' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %> 
 			<%=
 			f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name, @q.work_types_id_eq), { prompt:
-			'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %> <%# Reset Filter Button %>
+			'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300 px-4', onchange: "this.form.submit();"} %> <%# Reset Filter Button %>
 			<a href="/">
 				<%= image_submit_tag asset_path("reset_search.svg"), class: "p-2 border-gray-300 border cursor-pointer rounded bg-white"%>
 			</a>
@@ -76,11 +76,12 @@
 				<% end %>
 			</div>
 
-			<div class="mt-6">
+			<div class="mt-6 flex justify-center items-center">
 				<% if company.website %>
-				<a href="<%= company.website %>" target="_blank" rel="noopener" class="blue_button">Web Sitesi</a>
-				<% end %> <% if company.contact_email %>
-				<a href="mailto:<%= company.contact_email %>" class="light_button">İletişime Geç</a>
+				<a href="<%= company.website %>" target="_blank" rel="noopener" class="blue_button whitespace-nowrap focus:border-blue-400">Web Sitesi</a>
+				<% end %> 
+				<% if company.contact_email %>
+				<a href="mailto:<%= company.contact_email %>" class="light_button whitespace-nowrap">İletişime Geç</a>
 				<% end %>
 			</div>
 		</div>
