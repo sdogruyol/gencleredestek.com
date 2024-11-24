@@ -38,3 +38,5 @@
 .env.development.local
 .env.local
 .env.*
+
+.tool-versions

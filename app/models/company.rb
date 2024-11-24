@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id            :bigint           not null, primary key
+#  name          :string
+#  description   :string
+#  contact_email :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  website       :string
+#  location      :string
+#  perks         :string
+#  work_type     :string
+#  is_active     :boolean          default(TRUE)
+#
 class Company < ApplicationRecord
   scope :active, -> { where is_active: true }
   scope :inactive, -> { where is_active: false }
