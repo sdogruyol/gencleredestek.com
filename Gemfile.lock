@@ -283,12 +283,12 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.1)
-    tailwindcss-rails (2.0.8)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.8-arm64-darwin)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.8-x86_64-linux)
-      railties (>= 6.0.0)
+    tailwindcss-rails (3.0.0)
+      railties (>= 7.0.0)
+      tailwindcss-ruby
+    tailwindcss-ruby (3.4.15)
+    tailwindcss-ruby (3.4.15-arm64-darwin)
+    tailwindcss-ruby (3.4.15-x86_64-linux)
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
@@ -311,6 +311,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.4)
@@ -343,11 +344,12 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails (~> 2.0)
+  tailwindcss-rails (~> 3.0)
   turbo-rails
   tzinfo-data
   web-console
   webdrivers
+  will_paginate
 
 RUBY VERSION
    ruby 3.1.1p18
