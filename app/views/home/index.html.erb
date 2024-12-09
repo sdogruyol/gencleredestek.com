@@ -5,7 +5,10 @@
 	<header>
 		<div class="container md:px-20 py-11 mx-auto">
 			<nav class="flex items-center justify-between px-4 lg:px-12">
-				<p class="text-gray-600 z-10 cursor-pointer"><img src=<%= asset_path("logo.svg") %>></p>
+				<p class="text-gray-600 z-10 cursor-pointer">
+					<a href="/">
+					<img src=<%= asset_path("logo.svg") %>></a>
+				</p>
 				<a
 					href="https://docs.google.com/spreadsheets/d/1-IpEibP1nQod43qCJfVqIv1uz6F8nSlbuXxCPpqGiGw/edit?usp=sharing"
 					target="_blank"
@@ -32,7 +35,7 @@
 		<div class="my-11">
 			<%= search_form_for @q, url: root_path do |f| %>
 			<div class="mb-8">
-				<%= f.text_field :name_or_description_cont, placeholder: 'Anahtar Kelime', class: 'rounded w-full border-gray-300', onchange: "this.form.submit();" %>
+				<%= f.text_field :name_or_description_cont, placeholder: 'Anahtar Kelime', class: 'rounded w-full border-gray-300', onkeydown: "if(event.key === 'Enter'){this.form.submit();}" %>
 			</div>
 			<div class="flex space-x-6">
 				<%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id, :name,
