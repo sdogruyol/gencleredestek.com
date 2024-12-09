@@ -72,6 +72,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'annotate'
 end
 
 group :test do
@@ -81,4 +82,8 @@ group :test do
   gem "webdrivers"
 end
 
-gem "tailwindcss-rails", "~> 2.0"
+# pg_search builds ActiveRecord named scopes that take advantage of PostgreSQL’s full text search [https://github.com/Casecommons/pg_search]
+gem 'pg_search'
+# Pagination library for Rails and other Ruby applications [https://github.com/mislav/will_paginate]
+gem 'will_paginate'
+gem "tailwindcss-rails", "~> 3.0"
