@@ -43,7 +43,7 @@ class Company < ApplicationRecord
   self.per_page = 30 # Set default per-page value for pagination
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[name description contact_email website location perks work_type]
+    %w[id name description contact_email website location perks work_type]
   end
 
   def self.ransackable_associations(auth_object = nil)
