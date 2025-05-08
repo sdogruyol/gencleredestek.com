@@ -10,4 +10,12 @@
 #
 class Location < ApplicationRecord
   has_and_belongs_to_many :companies
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["id", "name"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["companies"]
+  end
 end
