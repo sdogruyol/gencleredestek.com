@@ -34,9 +34,6 @@
 		<%# Filter section %>
 		<div class="my-11">
 			<%= search_form_for @q, url: root_path do |f| %>
-			<div class="mb-8">
-				<%= f.text_field :name_or_description_cont, placeholder: 'Anahtar Kelime', class: 'rounded w-full border-gray-300', onkeydown: "if(event.key === 'Enter'){this.form.submit();}" %>
-			</div>
 			<div class="flex space-x-6">
 				<%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id, :name,
 				@q.locations_id_eq), { prompt: 'Konum' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
