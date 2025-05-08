@@ -1,7 +1,7 @@
 <%# Absolute Background Image %>
 <div class="absolute md:top-0 left-0 hidden sm:block z-0"><img src=<%= asset_path("header_background.png") %>></div>
 
-<div class="absolute mx-auto w-full z-10">
+<div class="absolute mx-auto z-10">
 	<header>
 		<div class="container md:px-20 py-11 mx-auto">
 			<nav class="flex items-center justify-between px-4 lg:px-12">
@@ -10,8 +10,7 @@
 					<img src=<%= asset_path("logo.svg") %>></a>
 				</p>
 				<a
-					href="https://docs.google.com/spreadsheets/d/1-IpEibP1nQod43qCJfVqIv1uz6F8nSlbuXxCPpqGiGw/edit?usp=sharing"
-					target="_blank"
+					href="/companies/new"
 					class="flex items-center p-2 md:px-4 border rounded-lg space-x-2 border-[#0062FF] cursor-pointer"
 				>
 					<img src=<%= asset_path("send.svg") %>>
@@ -88,7 +87,7 @@
 			<% end %>
 		</div>
 		<div class="flickr_pagination pt-5">
-			<%= will_paginate @companies, previous_label: 'Önceki Sayfa', next_label: 'Sonraki Sayfa' %>
+			<%= will_paginate @companies, previous_label: 'Önceki', next_label: 'Sonraki' %>
 		</div>
 	</main>
 
