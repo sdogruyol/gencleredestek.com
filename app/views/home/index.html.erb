@@ -37,8 +37,6 @@
 			<div class="flex space-x-6">
 				<%= f.select :locations_id_eq, options_from_collection_for_select(Location.all.order(:display_order), :id, :name,
 				@q.locations_id_eq), { prompt: 'Konum' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %>
-				<%= f.select :work_positions_id_eq, options_from_collection_for_select(WorkPosition.all.order(:name), :id, :name,
-				@q.work_positions_id_eq), { prompt: 'Pozisyon' }, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %> 
 				<%=
 				f.select :work_types_id_eq, options_from_collection_for_select(WorkType.all, :id, :name, @q.work_types_id_eq), { prompt:
 				'Çalışma Şekli'}, {class: 'rounded w-full py-2 border-gray-300', onchange: "this.form.submit();"} %> <%# Reset Filter Button %>
