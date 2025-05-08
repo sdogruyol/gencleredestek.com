@@ -40,7 +40,7 @@ class Company < ApplicationRecord
                   }
   
   # Support pagination for pg_search results
-  self.per_page = 12 # Set default per-page value for pagination
+  self.per_page = 30 # Set default per-page value for pagination
 
   def self.ransackable_attributes(auth_object = nil)
     %w[name description contact_email website location perks work_type]
