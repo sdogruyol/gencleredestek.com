@@ -26,7 +26,3 @@ development:
 test:
   <<: *default
   database: genclere_destek_test
-
-production: &production
-  adapter: postgresql
-  url: <%= ENV.fetch("DATABASE_URL") %>
