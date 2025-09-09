@@ -29,4 +29,4 @@ test:
 
 production: &production
   adapter: postgresql
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV.fetch("GENCLERE_DESTEK_DATABASE_URL") %>
