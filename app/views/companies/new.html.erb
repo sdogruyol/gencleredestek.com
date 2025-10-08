@@ -1,0 +1,90 @@
+<div class="container px-8 md:px-32 mx-auto my-12">
+  <header>
+		<div class="container my-11 mx-auto">
+      <a href="/">
+        <nav class="flex items-center justify-between">
+          <p class="text-gray-600 z-10 cursor-pointer"><img src=<%= asset_path("logo.svg") %>></p>
+        </nav>
+      </a>
+		</div>
+	</header>
+  <%= form_with(model: @company, local: true, class: "space-y-6") do |f| %>
+    <div class="space-y-4">
+      <!-- Details Section -->
+      <div>
+        <h2 class="text-lg font-medium text-gray-700">Firmaı Ekle</h2>
+        <span class="text-sm text-gray-600">Firmanızı ekleyerek gençlere destek olabilirsiniz.</span>
+        <div class="mt-4 space-y-2">
+          <div>
+            <%= f.label :name, "Firma Adı", class: "block text-sm font-medium text-gray-600" %>
+            <%= f.text_field :name, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
+          </div>
+          
+          <div>
+            <%= f.label :contact_email, "İletişim E-posta Adresi", class: "block text-sm font-medium text-gray-600" %>
+            <%= f.email_field :contact_email, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
+          </div>
+          
+          <div>
+            <%= f.label :website, "Site Adresi", class: "block text-sm font-medium text-gray-600" %>
+            <%= f.url_field :website, placeholder: 'https://www.xxx', class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
+          </div>
+          
+          <div>
+            <%= f.label :perks, "Avantajlar ve Etkinlikler", class: "block text-sm font-medium text-gray-600" %>
+            <%= f.text_area :perks, rows: 3, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
+          </div>
+
+          <div class="flex items-center">
+            <%= f.check_box :is_active, class: "h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" %>
+            <%= f.label :is_active, "Şirket halen Aktif", class: "ml-2 text-sm font-medium text-gray-600" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Work Types Section -->
+      <div>
+        <h2 class="text-lg font-medium text-gray-700">Çalışma Şekli</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+          <% WorkType.all.each do |work_type| %>
+            <label for="<%= "work_types_#{work_type.name}" %>" class="flex items-center gap-3">
+              <%= check_box_tag "work_types[]", work_type.id, nil, id: "work_types_#{work_type.name}" %>
+              <span class="font-semibold"> <%= work_type.name%> </span>
+            </label>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Work Positions Section -->
+      <div>
+        <h2 class="text-lg font-medium text-gray-700">Açık / Aktif Pozisyonlar</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+          <% WorkPosition.all.each do |position| %>
+            <label for="<%= "work_positions_#{position.name}" %>" class="flex items-center gap-3">
+              <%= check_box_tag "work_positions[]", position.id, nil, id: "work_positions_#{position.name}" %>
+              <span class="font-semibold"> <%= position.name %> </span>
+            </label>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Locations Section -->
+      <div>
+        <h2 class="text-lg font-medium text-gray-700">Lokasyonlar</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+          <% Location.all.each do |location| %>
+            <label for="<%= "locations_#{location.name}" %>" class="flex items-center gap-3">
+              <%= check_box_tag "locations[]", location.id, nil, id: "locations_#{location.name}" %>
+              <span class="font-semibold"> <%= location.name %> </span>
+            </label>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="mb-20">
+        <%= f.submit "Bilgileri Kaydet & Onayla", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    </div>
+  <% end %>
+</div>
